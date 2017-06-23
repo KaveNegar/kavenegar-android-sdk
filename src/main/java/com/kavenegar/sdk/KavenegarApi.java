@@ -495,6 +495,22 @@ public class KavenegarApi {
         return verifyLookup(receptor, token, "", "", template);
     }
 
+    public List<SendResult> CallMakeTTS( List<String> receptors, String message) throws BaseException {
+
+        JsonArray entry = execute(getApiPath("call/maketts"),
+                "receptor", StringUtils.join(",", receptors),
+                "message", message
+        ).getAsJsonArray();
+
+        List<SendResult> list = new ArrayList<>();
+        for (int i = 0; i < entry.size(); i++) {
+            JsonObject json = entry.get(i).getAsJsonObject();
+            SendResult result = new SendResult(json);
+            list.add(result);
+        }
+        return list;
+    }
+
 
 
 }
