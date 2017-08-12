@@ -490,7 +490,13 @@ public class KavenegarApi {
         JsonObject json = array.get(0).getAsJsonObject();
         return new SendResult(json);
     }
-
+    
+    public SendResult verifyLookup(String receptor, String token, String token2, String token3, String template,String token10,String token20) throws BaseException {
+        String path = getApiPath("verify/lookup");
+        JsonArray array = execute(path, "receptor", receptor, "token", token, "token2", token2, "token3", token3, "template", template,"token10",token10,"token20",token20).getAsJsonArray();
+        JsonObject json = array.get(0).getAsJsonObject();
+        return new SendResult(json);
+    }
     public SendResult verifyLookup(String receptor, String token, String template) throws BaseException {
         return verifyLookup(receptor, token, "", "", template);
     }
