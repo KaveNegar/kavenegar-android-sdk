@@ -22,6 +22,7 @@ import com.kavenegar.sdk.models.ReceiveResult;
 import com.kavenegar.sdk.models.SendResult;
 import com.kavenegar.sdk.models.StatusLocalMessageIdResult;
 import com.kavenegar.sdk.models.StatusResult;
+import com.kavenegar.sdk.utils.PairValue;
 import com.kavenegar.sdk.utils.StringUtils;
 
 import java.io.IOException;
@@ -37,6 +38,7 @@ import cz.msebera.android.httpclient.impl.client.CloseableHttpClient;
 import cz.msebera.android.httpclient.impl.client.HttpClients;
 import cz.msebera.android.httpclient.message.BasicNameValuePair;
 import cz.msebera.android.httpclient.util.EntityUtils;
+import org.apache.commons.lang3.tuple.Pair;
 
 
 /**
@@ -491,12 +493,26 @@ public class KavenegarApi {
         return new SendResult(json);
     }
     
-    public SendResult verifyLookup(String receptor, String token, String token2, String token3, String template,String token10,String token20) throws BaseException {
+    public SendResult verifyLookup(String receptor, String token, String token2, String token3, String template,List<PairValue> Keys) throws BaseException {
         String path = getApiPath("verify/lookup");
+        String token10=null;
+        String token20=null;
+        
+        for (PairValue Key : Keys) {
+            if (null != Key.getKey()) switch (Key.getKey()) {
+                case "token10":
+                    token10 = Key.getValue();
+                    break;
+                case "token20":
+                    token20 = Key.getValue();
+                    break;
+            }
+        }
         JsonArray array = execute(path, "receptor", receptor, "token", token, "token2", token2, "token3", token3, "template", template,"token10",token10,"token20",token20).getAsJsonArray();
         JsonObject json = array.get(0).getAsJsonObject();
         return new SendResult(json);
     }
+    
     public SendResult verifyLookup(String receptor, String token, String template) throws BaseException {
         return verifyLookup(receptor, token, "", "", template);
     }
