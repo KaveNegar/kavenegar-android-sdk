@@ -1,4 +1,4 @@
-#Java-example
+# kavenegar-android-sdk
 # [Kavenegar RESTful API Document](http://kavenegar.com/rest.html)
 If you need to future information about API document Please visit RESTful Document
 
@@ -29,7 +29,7 @@ Step 2<p>Add the dependency</p>
 
 ```java
 dependencies {
-		compile 'com.github.User:Repo:Tag'
+		compile 'com.github.KaveNegar:kavenegar-android-sdk:v1.beta'
 	}
 ```
 #### maven
@@ -37,7 +37,7 @@ dependencies {
  Step 1 <p> Add the JitPack repository to your build file </p>
  
 ```java
-<repositories>
+	<repositories>
 		<repository>
 		    <id>jitpack.io</id>
 		    <url>https://jitpack.io</url>
@@ -47,10 +47,10 @@ dependencies {
 Step 2<p>Add the dependency</p>
 
 ```java
-<dependency>
-	    <groupId>com.github.User</groupId>
-	    <artifactId>Repo</artifactId>
-	    <version>Tag</version>
+	<dependency>
+	    <groupId>com.github.KaveNegar</groupId>
+	    <artifactId>kavenegar-android-sdk</artifactId>
+	    <version>v1.beta</version>
 	</dependency>
 ```
 ####  sbt
@@ -64,7 +64,7 @@ Step 1 <p> Add the JitPack repository to your build file </p>
 Step 2<p>Add the dependency</p>
 
 ```java
-    libraryDependencies += "com.github.User" % "Repo" % "Tag"
+    libraryDependencies += "com.github.KaveNegar" % "kavenegar-android-sdk" % "v1.beta"	
 
 ```
 #### leiningen
@@ -73,13 +73,11 @@ Step 1 <p> Add the JitPack repository to your build file </p>
  
 ```java
     :repositories [["jitpack" "https://jitpack.io"]]
-
-	}
 ```
 Step 2<p>Add the dependency</p>
 
 ```java
-    :dependencies [[com.github.User/Repo "Tag"]]
+    :dependencies [[com.github.KaveNegar/kavenegar-android-sdk "v1.beta"]]
 
 ```
 ## Usage
